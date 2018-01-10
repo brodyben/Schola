@@ -1,0 +1,47 @@
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+body {
+	padding-top: 90px;
+	margin-bottom: 60px;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	border: none;
+	-webkit-box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.3);
+	height: 60px;
+	color: black;
+	font-weight: lighter;
+	text-align: center;
+	padding-top: 20px;
+}
+
+.lighter {
+	font-weight: lighter;
+}
+
+.blue {
+	color: #2196f3;
+}
+
+.jumbotron h1, .jumbotron .h1 {
+	color: #2196f3;
+}
+
+.btn {
+	text-transform: none;
+}
+
+.lead {
+	margin-bottom: 0px;
+}
+
+.search {
+	padding-top: 15px;
+}

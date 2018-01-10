@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}New Office Hours{% endblock %}
+{% block content %}
+<div class="row">
+	<div class="col-lg-4 col-lg-offset-4">
+		<form class="form-horizontal" action="/tutors/{{login['tutor']}}/office-hours" method="post">
+			<fieldset>
+				<legend>New Office Hours</legend>
+				<div class="form-group">
+					<label for="location" class="col-lg-2 control-label">Location</label>
+					<div class="col-lg-10">
+						<input type="text" class="form-control" id="location" name="location" placeholder="">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="weekday" class="col-lg-2 control-label">Day</label>
+					<div class="col-lg-10">
+						<select class="form-control" id="weekday" name="weekday">
+							<option>Sunday</option>
+							<option>Monday</option>
+							<option>Tuesday</option>
+							<option>Wednesday</option>
+							<option>Thursday</option>
+							<option>Friday</option>
+							<option>Saturday</option>
+						</select>
+						<br>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="start" class="col-lg-2 control-label">Start</label>
+					<div class="col-lg-4">
+						<input type="time" class="form-control" id="start" name="start" placeholder="">
+					</div>
+					<label for="end" class="col-lg-2 control-label">End</label>
+					<div class="col-lg-4">
+						<input type="time" class="form-control" id="end" name="end" placeholder="">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="course" class="col-lg-2 control-label">Course</label>
+					<div class="col-lg-10">
+						<select class="form-control" id="course" name="course">
+							{% for course in courses %}
+							<option value="{{course['course_id']}}">{{course['name']}}</option>
+							{% endfor %}
+						</select>
+						<br>
+					</div>
+				</div>
+				<div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                      <a href="/"><button class="btn btn-default">Cancel</button></a>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                  </div>
+			</fieldset>
+		</form>
+	</div>
+</div>
+{% endblock %}

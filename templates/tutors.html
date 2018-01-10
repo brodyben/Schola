@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Tutors{% endblock %}
+{% block content %}
+<div class="row">
+	<div class="col-lg-3">
+		<h1>Tutors</h1>
+	</div>
+
+	<div class="col-lg-9 search">
+		<div class="form-group">
+			<label class="control-label blue" for="focusedInput"><i class="fa fa-search" aria-hidden="true"></i> Search Tutors</label>
+			<input class="form-control" type="text" id="focusedInput" onkeyup="lookupTutor()" placeholder="Tutor Name">
+		</div>
+	</div>
+</div>
+
+<hr>
+
+<div class="row">
+	<table id="courseTable" class="table table-striped table-hover ">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Username</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for tutor in tutors %}
+			<tr>
+				<td><a class="tutor" href="/tutors/{{tutor['id']}}/office-hours">{{tutor['name']}}</a></td>
+				<td><a href="mailto:{{tutor['email']}}">{{tutor['email']}}</a></td>
+				<td>{{tutor['username']}}</td>
+				<td>
+				<form method="post" action="/tutors/{{tutor['id']}}/delete">
+				<button style="float:right;" type="submit" class="btn btn-lg btn-danger">Delete</button>
+				</form>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+
+<script>function lookupTutor(){var input,filter,table,tr,td,i;input=document.getElementById("focusedInput");filter=input.value.toUpperCase();table=document.getElementById("courseTable");tr=table.getElementsByTagName("tr");for(i=0;i<tr.length;i++){td=tr[i].getElementsByClassName("tutor")[0];if(td){if(td.innerHTML.toUpperCase().indexOf(filter)>-1){tr[i].style.display=""}else{tr[i].style.display="none"}}}}</script>
+{% endblock %}
